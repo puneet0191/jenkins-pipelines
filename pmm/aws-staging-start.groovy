@@ -428,7 +428,7 @@ pipeline {
                                     pmm-admin list
                                 fi
                             else
-                                sudo pmm-admin config --client-name pmm-client-hostname --server \$IP
+                                sudo pmm-admin config --client-name pmm-client-hostname --server \\\$(ip addr show eth0 | grep 'inet ' | awk '{print\\\$2}' | cut -d '/' -f 1)
                             fi
 
                             if [[ \$PMM_VERSION == pmm1 ]]; then
