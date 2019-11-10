@@ -450,9 +450,7 @@ pipeline {
                                 if [[ \$CLIENT_VERSION != dev-latest ]]; then
                                     export PATH="$PWD/pmm2-client/bin:$PATH"
                                 fi
-                                if [[ \$CLIENT_INSTANCE == no ]]; then
-                                    export SERVER_IP=\$IP;
-                                fi
+
                                 bash /srv/pmm-qa/pmm-tests/pmm-framework.sh \
                                     --ms-version  ${MS_VERSION} \
                                     --mo-version  ${MO_VERSION} \
@@ -465,7 +463,7 @@ pipeline {
                                     --pmm2 \
                                     --dbdeployer \
                                     --query-source=${QUERY_SOURCE} \
-                                    --pmm2-server-ip=\$SERVER_IP
+                                    --pmm2-server-ip=\$IP
                             fi
                         "
                     """
